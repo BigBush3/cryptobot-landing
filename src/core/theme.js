@@ -10,6 +10,13 @@ export const defaultColors = {
   primary: '#0D0D12',
   secondary: '#41A4DF',
   background: '#232328',
+  blue: {
+    light: 'rgba(41, 126, 226, 0.12)',
+    primary: '#41A4DF',
+    regular: '#297EE2',
+    dark: '#232328',
+  },
+  white: '#FFF',
 };
 export const darkColors = {
   body: '#18181D',
@@ -37,6 +44,9 @@ export const theme = {
       md: '980px',
       lg: '1188px',
     },
+  },
+  spaces: {
+    base: 1,
   },
   min,
   max,

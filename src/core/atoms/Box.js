@@ -1,59 +1,34 @@
 import styled, { css } from 'styled-components';
-import {
-  flexChildMixin,
-  buildResponsiveWidthMixin,
-  hiddenMixin,
-} from '../helpers';
 
-const getAlignment = (align) => {
-  if (align === 'center') {
-    return 'center';
-  } else if (align === 'right' || align === 'bottom') {
-    return 'flex-end';
-  }
-  return 'flex-start';
-};
+import { spacingMixin, flexMixin, colorMixin } from '@/core/mixins';
 
 const Box = styled.div`
-  display: block;
+  display: flex;
+  ${spacingMixin}
+  ${flexMixin}
+  ${colorMixin}
   ${(p) =>
-    p.width &&
+    p.zIndex &&
     css`
-      width: ${p.width};
-    `}
-  ${flexChildMixin}
-  ${buildResponsiveWidthMixin}
-  ${(p) =>
-    p.padded &&
-    css`
-      padding-left: ${p.theme.general.gridGap};
-      padding-right: ${p.theme.general.gridGap};
+      z-index: ${p.zIndex};
     `}
   ${(p) =>
-    p.exact &&
+    p.position &&
     css`
-      flex-grow: 0;
-      flex-shrink: 0;
+      position: ${p.position};
     `}
   ${(p) =>
-    p.row &&
+    p.borderTop &&
     css`
-      flex-direction: row;
+      border-top-width: 1px;
+      border-top-color: ${p.theme.colors.gray.light};
     `}
   ${(p) =>
-    (p.alignX || p.alignY) &&
+    p.borderBottom &&
     css`
-      display: flex;
-      flex-direction: column;
-      align-items: ${getAlignment(p.alignX)};
-      justify-content: ${getAlignment(p.alignY)};
+      border-bottom-width: 1px;
+      border-bottom-color: ${p.theme.colors.gray.light};
     `}
-  ${hiddenMixin}
-  ${(p) => p.theme.max('md')`
-    max-width: 100%; 
-    width: auto !important;
-    margin: auto;  
-  `}
 `;
 
 export default Box;
